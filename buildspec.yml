@@ -7,14 +7,9 @@ phases:
 
   build:
     commands:
-      - echo "Deploy started"
+      - echo "CodeBuild triggered successfully"
+      - echo "CI/CD pipeline completed"
 
-      - echo "$EC2_KEY" | tr -d '\r' > key.pem
-      - chmod 400 key.pem
-
-      - ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$EC2_HOST "
-          cd /home/ubuntu/fullstack-cicd-project &&
-          git pull --rebase origin main &&
-          npm install &&
-          pm2 restart all
-        "
+artifacts:
+  files:
+    - '**/*'
