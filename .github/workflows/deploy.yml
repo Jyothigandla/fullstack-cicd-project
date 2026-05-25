@@ -22,7 +22,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i cicd-key.pem ubuntu@52.91.2.130 "
             cd /home/ubuntu/fullstack-cicd-project &&
-            git pull origin main &&
+            git pull --rebase origin main &&
             npm install &&
             pm2 restart all
           "
